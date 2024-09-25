@@ -1,4 +1,3 @@
-// screens/ResetPasswordScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { sendPasswordResetEmail } from 'firebase/auth';
@@ -12,7 +11,7 @@ export default function ResetPasswordScreen({ navigation }) {
       await sendPasswordResetEmail(auth, email);
       Alert.alert('Kiểm tra email của bạn để đặt lại mật khẩu.');
     } catch (error) {
-      Alert.alert('Lỗi', error.message);
+      Alert.alert('Lỗi', 'Không tìm thấy email');
     }
   };
 
@@ -26,7 +25,7 @@ export default function ResetPasswordScreen({ navigation }) {
         onChangeText={setEmail}
         keyboardType="email-address"
       />
-      <Button title="Gửi yêu cầu" onPress={handleResetPassword} />
+      <Button title="Gửi yêu cầu" onPress={handleResetPassword} color="green" />
     </View>
   );
 }
